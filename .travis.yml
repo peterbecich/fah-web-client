@@ -1,0 +1,35 @@
+language: node_js
+sudo: false
+dist: bionic
+addons:
+  apt:
+    update: true
+    packages:
+      - scons
+      - build-essential
+      - libssl-dev
+      - freeglut3-dev
+      - binutils-dev
+      - libiberty-dev
+      - libmariadb-dev-compat
+      - libleveldb-dev
+      - libsnappy-dev
+      - git
+
+node_js:
+  - "10"
+  - "12"
+
+install:
+  - export BUILD_ROOT=$HOME
+  - export CBANG_HOME=$BUILD_ROOT/cbang
+  - export FAH_CLIENT_VERSION_HOME=$BUILD_ROOT/fah-client-version
+  - cd $HOME
+  - git clone https://github.com/CauldronDevelopmentLLC/cbang.git
+  - git clone https://github.com/FoldingAtHome/fah-client-version.git
+  - cd $CBANG_HOME
+  - scons with_openssl=no disable_local=libevent
+
+script:
+  - cd $TRAVIS_BUILD_DIR
+  - scons

@@ -1,6 +1,8 @@
 fah-web-client
 ==============
 
+[![Build Status](https://travis-ci.com/FoldingAtHome/fah-web-client.svg?branch=master)](https://travis-ci.com/FoldingAtHome/fah-web-client)
+
 The Open-Source front-end for fah-client.
 
 
